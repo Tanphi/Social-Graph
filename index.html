@@ -102,7 +102,9 @@
 
 				//Add the heat layer
 				var heat = L.heatLayer(loc,{
-		            minOpacity: 0.8,
+		            radius: 5,
+		            blur: 1, 
+		            maxZoom: 17,
 		        }).addTo(map);
 				
 			</script>
