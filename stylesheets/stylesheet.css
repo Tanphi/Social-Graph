@@ -14,6 +14,9 @@ a {
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
+p {
+    text-align: justify;
+}
 
 .btn {
   display: inline-block;
