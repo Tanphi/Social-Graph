@@ -24,12 +24,12 @@
       <h3>
 		<a id="intro" class="anchor" href="#intro" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h3>
 
-		<p>This website is about things we discovered by analyzing the yelp data and our early expection can be seen in the video below.</p>
+		<p>This website is about things we discovered by analyzing the yelp data and our early expectations can be seen in the video below.</p>
 		<iframe width="854" height="480" src="https://www.youtube.com/embed/eWqxjrKIEvw" frameborder="0" allowfullscreen></iframe>
 
 		<p>As part of the project, the team chose to analyze Yelp dataset for generating behavioral trends and insights around user reviews, star rating distribution, sentiment analysis and its correlation with the actual star rating provided. </p>
 
-		<p>This dataset is based on real reviews on Yelp, and was provided by the company for a data analysis contest. The whole dataset consists of json files: business, user, review, tip, and check-in. As part of our analysis, a network between users and businesses will be constructed, so only the datasets on businesses and reviews will be used as the user ID can be found in the review.</p>
+		<p>This dataset is based on real reviews on Yelp, and was provided by the company for a data analysis contest. The whole dataset consists of json files: business, user, review, tip, and check-in. As part of our analysis, a network between users and businesses will be constructed, hence only the datasets on businesses and reviews will be used since the user ID can be found in the reviews.</p>
 
 		<p>Apart from the users’ names (the dataset is anonymized), you can find every information you may need, here are some examples:</p>
 
@@ -139,7 +139,7 @@
 			<ul type="1"> 
 				<li> The first step will be to find a better rating system than only the stars, based on the text of the reviews; </li> 
 				<li> Then, this score will be used along with similar users’ reviews to find the restaurants a user may like; </li> 
-				<li>Finally, we will try to identify super-users, that is users who represent the whole community the best: it can help Yelp to get better feedback and focus more on these users.</li>
+				<li>Finally, we will try to identify super-users, who are the best representatives of the whole community: it can help Yelp to get better feedback and focus more on these users.</li>
 			</ul>
 
 
@@ -153,14 +153,14 @@
 		<h3>
 		<a id="first-analysis" class="anchor" href="#first-analysis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>First insight into the data</h3>
 	        <p> On the graph below, it is possible to see the distribution of starts. It can seen that the most given star is the highest one, 5, while the lowest star, 0, is the least given. On the x-axis is the stars and on the y-axis is the frequency.</p>
-			<img src="img/dis_star.png" width="500" align="center">
+			<center><img src="img/dis_star.png" width="500"></center>
 	        <p> Next up is the distribution of degree for each business. Meaning how many businesses have for instance received 5 review or 100. On the figure below can it be seen that many businesses are located within the range of 1 to 40 reviews and almost 500 businesses have only received 3 reviews. It should be noticed that plot is zoomed which excludes business that have received all from 120 reviews to 1069.</p>
-			<img src="img/disDeg.png" width="500">
+			<center><img src="img/disDeg.png" width="500"></center>
 	        <p>On the figure below is the degree distribution of users, which is the same as the figure above where the degree is the amount of review written.</p>
-			<img src="img/disDegUser.png" width="500">
-			<p>Based on the distribution of degree are we able to tell that it is following the same pattern as power law, which indicate that it is a scale free network. Thus the network is not a random network. The thing with scale-free is that they have widely different on degrees within the same network, which is the same behaviour we experience with our distribution figures. The full version of user and business distribution can be seen below. The outermost user and business can’t not be seen on figures, given the large range on the y-axis.</p>
-	        <img src="img/degBusFull.png" width="500">
-	        <img src="img/degUserFull.png" width="500">
+			<center><img src="img/disDegUser.png" width="500"></center>
+			<p>Based on the distribution of degree we are able to tell that it is following the same pattern as power law, which indicates that it is a scale free network.The thing with scale-free is that they have widely different degrees within the same network, which is the same behaviour we experience with our distribution figures. The full version of user and business distribution can be seen below. The outermost user and business can’t not be seen on figures, given the large range on the y-axis.</p>
+	        <center><img src="img/degBusFull.png" width="500"></center>
+	        <center><img src="img/degUserFull.png" width="500"></center>
 	        
 
 
@@ -183,8 +183,8 @@
 
 			<p>The sentiment brings more nuance in the rating. However, two remarks can be done: first, the difference is very small between two reviews, and second it seems to follow the stars anyway. This two trends are investigated in the graphs below.</p>
 
-			<img src="img/sentDist.png" width="350">
-	        <img src="img/sentBox.png" width="350">
+			<center><img src="img/sentDist.png" width="350"></center>
+	        <center><img src="img/sentBox.png" width="350"></center>
 
 
 			<p>From these plots, it appears the sentimental score is fairly well distributed despite the small range. Therefore, a real nuance can be found. It also seems like this score globally follows the stars, but with a lager range (i.e. with more shade) especially for the 5-star reviews. It may be due to the fact that the users tend to give the top grade even if that was not the best restaurant they went to.</p>
@@ -216,7 +216,7 @@
 
 			<p>So, we used the closeness centrality of each user, that is the reciprocal of the total distance with the other users. This distance is given for an edge (= a review) by the difference of the sentimental score of the review and the average score of the business.</p>
 
-			<img src="img/superUser.png" width="400">
+			<center><img src="img/superUser.png" width="400"></center>
 
 
 			<p>Note that only users with at least 10 reviews were considered, and as a first estimation users with a closeness higher than 65 are super-users. 267 super-users are identified with these criteria.</p>
