@@ -83,9 +83,9 @@
 				};
 				
 				//Read our local data file and parse it to JSON			
-				//var knn1 = JSON.parse(ReadTextFile("./notebooks/JFK_KNN1.txt"));
+				var loc = JSON.parse(ReadTextFile("./leaflet/businessLoc.txt"));
 
-				//Set an empty map centered on NYC
+				//Set an empty map 
 				var map = L.map('map').setView([41.6445579,-47.256034], 2);
 				mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 				//Add the black map layer
@@ -94,17 +94,19 @@
 					subdomains: 'abcd',
 					maxZoom: 19
 				}).addTo(map);
+
+				//Add a popup on Pittsburgh
 				var markerpa = L.marker([40.43559,-80.0181]).addTo(map);
 				markerpa.bindPopup("Pittsburgh").openPopup();
 				
 
 				//Add the heat layer
-				/*var heat = L.heatLayer(knn1,{
+				var heat = L.heatLayer(loc,{
 		            radius: 3,
 		            blur: 1, 
 		            maxZoom: 17,
 		        }).addTo(map);
-				*/
+				
 			</script>
 		
 		</div>
