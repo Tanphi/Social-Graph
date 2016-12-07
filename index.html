@@ -21,7 +21,7 @@
 
     <section class="main-content">
       <h3>
-		<a id="welcome-to-github-pages" class="anchor" href="#intro" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h3>
+		<a id="intro" class="anchor" href="#intro" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h3>
 
 		<p>This website is about things we discovered by analyzing the yelp data and our early expection can be seen in the video below.</p>
 		<iframe width="854" height="480" src="https://www.youtube.com/embed/eWqxjrKIEvw" frameborder="0" allowfullscreen></iframe>
@@ -35,53 +35,57 @@
 			<ul plain> 
 				<li> Business attributes: </li> 
 				<ul plain> 
-					<li> Business attributes: </li> 
-					<li> Review attrubtes: </li> 
+					<li>business_id</li> 
+					<li>name</li>
+					<li>categories (fx: Fast Food, Restaurant, bar,...)</li>
+					<li>city</li> 
 				</ul> 
-				<li> Review attrubtes: </li> 
+				<li> Review attribtes: </li> 
 				<ul plain> 
-					<li> Business attributes: </li> 
-					<li> Review attrubtes: </li> 
+					<li>number of stars</li> 
+					<li>text</li>
+					<li>user_id</li>
+					<li>business_id</li>   
 				</ul>
 			</ul> 
 
 
-		<p>The business map can be found below. Notice how they are distributed strictly on a few cities. Considering the size of the initial dataset (~3Gb), we will focus on only the restaurants in Pittsburgh, PA.</p>
-		
-		<p><b>INSERT MAP HERE!!!</b></p>
+			<p>The business map can be found below. Notice how they are distributed strictly on a few cities. Considering the size of the initial dataset (~3Gb), we will focus on only the restaurants in Pittsburgh, PA.</p>
+			
+			<p><b>INSERT MAP HERE!!!</b></p>
 
-		<p>As stated before, the user/business based on the reviews will be analysed. </p>
+			<p>As stated before, the user/business based on the reviews will be analysed. </p>
 
-		<ul type="1"> 
-			<li> The first step will be to find a better rating system than only the stars, based on the text of the reviews; </li> 
-			<li> Then, this score will be used along with similar users’ reviews to find the restaurants a user may like; </li> 
-			<li>Finally, we will try to identify super-users, that is users who represent the whole community the best: it can help Yelp to get better feedback and focus more on these users.</li>
-		</ul>
+			<ul type="1"> 
+				<li> The first step will be to find a better rating system than only the stars, based on the text of the reviews; </li> 
+				<li> Then, this score will be used along with similar users’ reviews to find the restaurants a user may like; </li> 
+				<li>Finally, we will try to identify super-users, that is users who represent the whole community the best: it can help Yelp to get better feedback and focus more on these users.</li>
+			</ul>
 
 
-		<p>Our data analysis were done in Python and can be found at our <a href="http://nbviewer.jupyter.org/github/Tanphi/Social-Graph/blob/master/Yelpdata_v1.ipynb">notebook</a>. The notebook will elaborate on what is contained within the datasets and how the code is working. </p>
-		
+			<p>Our data analysis were done in Python and can be found at our <a href="http://nbviewer.jupyter.org/github/Tanphi/Social-Graph/blob/master/Yelpdata_v1.ipynb">notebook</a>. The notebook will elaborate on what is contained within the datasets and how the code is working. </p>
+			
 
-		<p>The original data for this project can be found at <a href="https://www.yelp.dk/dataset_challenge/dataset">dataset challenge</a> and the data which is used in the jupyter notebook can be found at <a href=""> this link.</a></p>
+			<p>The original data for this project can be found at <a href="https://www.yelp.dk/dataset_challenge/dataset">dataset challenge</a> and the data which is used in the jupyter notebook can be found at <a href=""> this link.</a></p>
 
 
 
 		<h3>
-		<a id="designer-templates" class="anchor" href="#first-analysis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>First insight into the data</h3>
-            <p> On the graph below, it is possible to see the distribution of starts. It can seen that the most given star is the highest one, 5, while the lowest star, 0, is the least given. On the x-axis is the stars and on the y-axis is the frequency.</p>
-			<img src="img/dis_star.png" width="854">
-            <p> Next up is the distribution of degree for each business. Meaning how many businesses have for instance received 5 review or 100. On the figure below can it be seen that many businesses are located within the range of 1 to 40 reviews and almost 500 businesses have only received 3 reviews. It should be noticed that plot is zoomed which excludes business that have received all from 120 reviews to 1069.</p>
-			<img src="img/disDeg.png" width="854">
-            <p>On the figure below is the degree distribution of users, which is the same as the figure above where the degree is the amount of review written.</p>
-			<img src="img/disDegUser.png" width="854">
+		<a id="first-analysis" class="anchor" href="#first-analysis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>First insight into the data</h3>
+	        <p> On the graph below, it is possible to see the distribution of starts. It can seen that the most given star is the highest one, 5, while the lowest star, 0, is the least given. On the x-axis is the stars and on the y-axis is the frequency.</p>
+			<img src="img/dis_star.png" width="500" align="center">
+	        <p> Next up is the distribution of degree for each business. Meaning how many businesses have for instance received 5 review or 100. On the figure below can it be seen that many businesses are located within the range of 1 to 40 reviews and almost 500 businesses have only received 3 reviews. It should be noticed that plot is zoomed which excludes business that have received all from 120 reviews to 1069.</p>
+			<img src="img/disDeg.png" width="500">
+	        <p>On the figure below is the degree distribution of users, which is the same as the figure above where the degree is the amount of review written.</p>
+			<img src="img/disDegUser.png" width="500">
 			<p>Based on the distribution of degree are we able to tell that it is following the same pattern as power law, which indicate that it is a scale free network. Thus the network is not a random network. The thing with scale-free is that they have widely different on degrees within the same network, which is the same behaviour we experience with our distribution figures. The full version of user and business distribution can be seen below. The outermost user and business can’t not be seen on figures, given the large range on the y-axis.</p>
-            <img src="img/degBusFull.png" width="854">
-            <img src="img/degUserFull.png" width="854">
-            
+	        <img src="img/degBusFull.png" width="500">
+	        <img src="img/degUserFull.png" width="500">
+	        
 
 
 		<h3>
-		<a id="designer-templates" class="anchor" href="#sentimental-score" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sentimental score</h3>
+		<a id="sentimental-score" class="anchor" href="#sentimental-score" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sentimental score</h3>
 
 			<p>The goal of this part is to find a new rating system instead of the stars, closer to the actual feeling of the user towards the restaurant. The star system is indeed biased, as a 3-star review is already considered as a “negative” review, and a 5-star one does not necessarily mean an exceptional experience. </p>
 			<p>So the idea is to use the text, that are more tightly linked to the user’s feel. To do so, we extracted the positive and negative words of the text, attributed then a score based on this wordlist, and add the average of these values as the “sentiment” of this review. Here are a few examples:</p>
@@ -99,38 +103,59 @@
 
 			<p>The sentiment brings more nuance in the rating. However, two remarks can be done: first, the difference is very small between two reviews, and second it seems to follow the stars anyway. This two trends are investigated in the graphs below.</p>
 
-			<p><b>INSERT THE TWO PLOTS</b></p>
+			<img src="img/sentDist.png" width="350">
+	        <img src="img/sentBox.png" width="350">
 
 
 			<p>From these plots, it appears the sentimental score is fairly well distributed despite the small range. Therefore, a real nuance can be found. It also seems like this score globally follows the stars, but with a lager range (i.e. with more shade) especially for the 5-star reviews. It may be due to the fact that the users tend to give the top grade even if that was not the best restaurant they went to.</p>
 
 			<p>As a conclusion, we found a good rating system that generally follows the stars system, but gives a lot more nuance. We will use this score instead of the stars for the rest of the analysis.</p>
-        <h3>
+	    <h3>
 		<a id="designer-templates" class="anchor" href="#new-experience" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>New experience</h3>
-        <p>By utilising a weighted network, was it possible to make a function that can take a user and  a number to return n amount of recommendation on new businesses.</p>
+	        <p>By utilising a weighted network, was it possible to make a function that can take a user and  a number to return n amount of recommendation on new businesses.</p>
 
-        <p>The network is made so every node is a business and between the businesses are weighted edges. The weight of a edge between two businesses increases for each user that likes both of the businesses, meaning if two there is only to users liking the same businesses then the edge will have a weight of 2. It should be noticed that all the businesses included in the network are the ones that have received a sentimental score above a certain threshold.</p>
+	        <p>The network is made so every node is a business and between the businesses are weighted edges. The weight of a edge between two businesses increases for each user that likes both of the businesses, meaning if two there is only to users liking the same businesses then the edge will have a weight of 2. It should be noticed that all the businesses included in the network are the ones that have received a sentimental score above a certain threshold.</p>
 
-        <p>For instance by giving the function a random user and the number of 5, then the function returned the following:</p>
-        <ul plain>
-            <li>Ibiza Tapas & Wine Bar, 6</li>
-            <li>Seviche 4</li>
-            <li>Silk Elephant 4</li>
-            <li>Thai Place Restaurant, 3</li>
-            <li>Soba, 3</li>
-        </ul>
-        <p>From the result of the function then it can be observed that best recommendation for that specific user is Ibiza Tapas & Wine Bar with a weight of 6, while Thai Place Restaurant and Soba have a recommendation with the weight of 3. This means that for Ibiza Tapas & Wine Bar were there 6 user which like Ibiza Tapas & Wine Bar and one of the businesses that the random user also like.</p>
-        
-        <h3>
+	        <p>For instance by giving the function a random user and the number of 5, then the function returned the following:</p>
+	        <ul plain>
+	            <li>Ibiza Tapas & Wine Bar, 6</li>
+	            <li>Seviche 4</li>
+	            <li>Silk Elephant 4</li>
+	            <li>Thai Place Restaurant, 3</li>
+	            <li>Soba, 3</li>
+	        </ul>
+	        <p>From the result of the function then it can be observed that best recommendation for that specific user is Ibiza Tapas & Wine Bar with a weight of 6, while Thai Place Restaurant and Soba have a recommendation with the weight of 3. This means that for Ibiza Tapas & Wine Bar were there 6 user which like Ibiza Tapas & Wine Bar and one of the businesses that the random user also like.</p>
+	    
+
+
+	    <h3>
+		<a id="designer-templates" class="anchor" href="#super-users" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Super Users</h3>
+
+			<p>Finally, we tried to identify super-users: it might indeed be useful for Yelp to have a group of users that represent the best the whole community. These users should be close to the other users in the graph (ie reviewed the same restaurants), but should also have an opinion close to the general felling of the community.</p>
+
+
+			<p>So, we used the closeness centrality of each user, that is the reciprocal of the total distance with the other users. This distance is given for an edge (= a review) by the difference of the sentimental score of the review and the average score of the business.</p>
+
+			<img src="img/superUser.png" width="400">
+
+
+			<p>Note that only users with at least 10 reviews were considered, and as a first estimation users with a closeness higher than 65 are super-users. 267 super-users are identified with these criteria.</p>
+
+			<p> From these plots, it appears that we found a new group of users that are the most central in the network, and not only based on he number of reviews. Of course users with a lot of reviews will be almost automaticly super-users, but there are some with only 10 reviews. This group is particularly interesting for Yelp as they reprensent the community fairly well, even with a lower activity than other users.</p>
+
+
+	    <h3>
 		<a id="designer-templates" class="anchor" href="#discussion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Discussion</h3>
-        <p>Using the basic network technique it was possible to plot the distribution for the network and by doing so could it be seen, based on pattern, that it was scale-free network and not a random network. </p>
-        <p>By combing sentimental analysis and network tool, it was possible to create a weighted network where the edges was based on the reviewer’s sentimental score. That made it possible to make a function which is able to give recommendation to user that want to experience something new.</p>
-        <p>Since the data downloaded was more or less cleaned in it original condition, were there only limited work to do with cleaning and reducing the dataset.
-        With use of network and sentimental tools were we able to gather more information which made it so, that we could create a weighted network based on sentimental score. With that network were we able to make recommendations for each user if he/she have a history as a reviewer.</p>
-        
-        <h3>
+	        <p>Using the basic network technique it was possible to plot the distribution for the network and by doing so could it be seen, based on pattern, that it was scale-free network and not a random network. </p>
+	        <p>By combing sentimental analysis and network tool, it was possible to create a weighted network where the edges was based on the reviewer’s sentimental score. That made it possible to make a function which is able to give recommendation to user that want to experience something new.</p>
+	        <p>Since the data downloaded was more or less cleaned in it original condition, were there only limited work to do with cleaning and reducing the dataset.
+	        With use of network and sentimental tools were we able to gather more information which made it so, that we could create a weighted network based on sentimental score. With that network were we able to make recommendations for each user if he/she have a history as a reviewer.</p>
+	        
+	    <h3>
 		<a id="designer-templates" class="anchor" href="#further-work" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Further work</h3>
-        <p>If more time was given, then it would have been possible to make figures that showed small part of the networks. Because the reason for that there is no included figure of the networks, is that their are too many nodes and links thus making it meaningless.</p>
+	    	<p>If more time was given, then it would have been possible to make figures that showed small part of the networks. Because the reason for that there is no included figure of the networks, is that their are too many nodes and links thus making it meaningless.</p>
+	  
+
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/Tanphi/Social-Graph">Social-graph</a> is maintained by <a href="https://github.com/Tanphi">Tanphi</a>.</span>
 
