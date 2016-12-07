@@ -59,9 +59,6 @@
 		</ul>
 
 
-
-
-
 		<p>Our data analysis were done in Python and can be found at our <a href="http://nbviewer.jupyter.org/github/Tanphi/Social-Graph/blob/master/Yelpdata_v1.ipynb">notebook</a>. The notebook will elaborate on what is contained within the datasets and how the code is working. </p>
 		
 
@@ -70,28 +67,42 @@
 
 
 		<h3>
-		<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Designer Templates</h3>
+		<a id="designer-templates" class="anchor" href="#first-analysis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>First insight into the data</h3>
 
 			<img src="img/dis_star.png" width="854">
 			<img src="img/disDeg.png" width="854">
 			<img src="img/disDegUser.png" width="854">
 
-			<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
+			<p></p>
+
 
 		<h3>
-		<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
+		<a id="designer-templates" class="anchor" href="#sentimental-score" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sentimental score</h3>
 
-		<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+			<p>The goal of this part is to find a new rating system instead of the stars, closer to the actual feeling of the user towards the restaurant. The star system is indeed biased, as a 3-star review is already considered as a “negative” review, and a 5-star one does not necessarily mean an exceptional experience. </p>
+			<p>So the idea is to use the text, that are more tightly linked to the user’s feel. To do so, we extracted the positive and negative words of the text, attributed then a score based on this wordlist, and add the average of these values as the “sentiment” of this review. Here are a few examples:</p>
 
-		<h3>
-		<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+			<code style="margin-left:5em;">Yes this place is a little out dated and not opened on the weekend. But other than that the staff is always pleasant and fast to make your order. Which is always spot on fresh veggies on their hoggies and other food. They also have daily specials and ice cream which is really good. I had a banana split they piled the toppings on. They win pennysaver awards ever years i see why.</code>
+			<p style="margin-left:5em;">Sentimental score: 4.967 <br>Stars: 5</p>
 
-		<p>You can @mention a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+			<code style="margin-left:5em;">I've never posted a yelp review before.  This meal was so horrible that I downloaded the yelp app just so I could warn others to stay away!  We ordered food from Capri since we were going to voodoo brewery.  We ordered a cheesesteak with no mayo and an Italian calzone since the person working there talked up the calzones.  We ended up with a cheesesteak heavy on the mayo and an Italian wedgie, which was just a folded up pizza full of mayo and onions.  No sign of Italian meat to be found.  No marinara sauce.  It was inedible.  We ended up walking to kfc instead. 
+			
+			I want to leave a zero star rating, but yelp won't let me.  So they get an undeserved star.</code>
+			<p style="margin-left:5em;">Sentimental score: 4.959<br>Stars: 1</p>
+			
+		
+			<p>Even if the first review has 5 stars, it seems like this restaurant was good, but not the best restaurant either. And the second review, which is really negative, has a lower sentimental score. </p>
 
-		<h3>
-		<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+			<p>The sentiment brings more nuance in the rating. However, two remarks can be done: first, the difference is very small between two reviews, and second it seems to follow the stars anyway. This two trends are investigated in the graphs below.</p>
 
-		<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+			<p><b>INSERT THE TWO PLOTS</b></p>
+
+
+			<p>From these plots, it appears the sentimental score is fairly well distributed despite the small range. Therefore, a real nuance can be found. It also seems like this score globally follows the stars, but with a lager range (i.e. with more shade) especially for the 5-star reviews. It may be due to the fact that the users tend to give the top grade even if that was not the best restaurant they went to.</p>
+
+			<p>As a conclusion, we found a good rating system that generally follows the stars system, but gives a lot more nuance. We will use this score instead of the stars for the rest of the analysis.</p>
+
+
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/Tanphi/Social-Graph">Social-graph</a> is maintained by <a href="https://github.com/Tanphi">Tanphi</a>.</span>
