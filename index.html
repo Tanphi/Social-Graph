@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="shortcut icon" href="http://tanphi.github.io/icon.png">
+    <link rel="stylesheet" href="./leaflet/leaflet.css">
   </head>
   <body>
     <section class="page-header">
@@ -52,7 +53,75 @@
 
 			<p>The business map can be found below. Notice how they are distributed strictly on a few cities. Considering the size of the initial dataset (~3Gb), we will focus on only the restaurants in Pittsburgh, PA.</p>
 			
-			<p><b>INSERT MAP HERE!!!</b></p>
+			
+
+
+
+			<div id="map" style="width: 600px; height: 400px"></div>
+		
+			<script src="./leaflet/leaflet.js"></script>
+			<script src="./leaflet/leaflet-heat.js"></script>
+
+			<script type="text/javascript">
+				//Simple request to read data
+				function ReadTextFile(file)
+				{
+					var rawFile = new XMLHttpRequest();
+					rawFile.open("GET", file, false);
+					rawFile.onreadystatechange = function ()
+					{
+						if(rawFile.readyState === 4)
+						{
+							if(rawFile.status === 200 || rawFile.status == 0)
+							{
+								var allText = rawFile.responseText;
+							}
+						}
+					}
+					rawFile.send(null);
+					return rawFile.responseText;
+				};
+				
+				//Read our local data file and parse it to JSON			
+				var knn1 = JSON.parse(ReadTextFile("./notebooks/JFK_KNN1.txt"));
+
+				//Set an empty map centered on NYC
+				var map = L.map('map').setView([40.43559,-80.0181], 4);
+				mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+				//Add the black map layer
+				L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					maxZoom: 19
+				}).addTo(map);
+				var markerpa = L.marker([40.43559,-80.0181]).addTo(map);
+				markerpa.bindPopup("Pittsburgh").openPopup();
+				
+
+				//Add the heat layer
+				/*var heat = L.heatLayer(knn1,{
+		            radius: 3,
+		            blur: 1, 
+		            maxZoom: 17,
+		        }).addTo(map);
+				*/
+			</script>
+		
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			<p>As stated before, the user/business based on the reviews will be analysed. </p>
 
