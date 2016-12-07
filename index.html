@@ -89,12 +89,18 @@
 				var map = L.map('map').setView([41.6445579,-47.256034], 2);
 				mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 				//Add the black map layer
-				L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png', {
+
+				L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					maxZoom: 19
+				});
+				/*L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png', {
 					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 					subdomains: 'abcd',
 					maxZoom: 19
 				}).addTo(map);
-
+				*/
 				//Add a popup on Pittsburgh
 				var markerpa = L.marker([40.43559,-80.0181]).addTo(map);
 				markerpa.bindPopup("Pittsburgh").openPopup();
